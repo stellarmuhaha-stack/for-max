@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para você 💗</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #ffe6ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* TELA INICIAL */
+
+    .inicio {
+      text-align: center;
+    }
+
+    .coracao {
+      width: 150px;
+      height: 150px;
+      background: #ff5c8a;
+      position: relative;
+      border: none;
+      cursor: pointer;
+      margin: auto;
+      transform: rotate(-45deg);
+      transition: 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 92, 138, 0.3);
+    }
+
+    .coracao::before,
+    .coracao::after {
+      content: "";
+      width: 150px;
+      height: 150px;
+      background: #ff5c8a;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .coracao::before {
+      top: -75px;
+      left: 0;
+    }
+
+    .coracao::after {
+      top: 0;
+      left: 75px;
+    }
+
+    .coracao:hover {
+      transform: rotate(-45deg) scale(1.1);
+    }
+
+    /* TEXTO DO CORAÇÃO */
+
+    .texto-coracao {
+      position: absolute;
+      z-index: 5;
+      transform: rotate(45deg);
+      width: 190px;
+      left: -20px;
+      top: 58px;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* CONTEÚDO APÓS O CLIQUE */
+
+    #surpresa {
+      display: none;
+      text-align: center;
+      animation: aparecer 1s ease;
+      padding: 30px;
+    }
+
+    #surpresa h1 {
+      color: #ff4f7b;
+      margin-bottom: 15px;
+      font-size: 32px;
+    }
+
+    #surpresa p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* CORAÇÕES FLUTUANDO */
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: subir 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================= -->
+  <!-- TELA INICIAL -->
+  <!-- ========================= -->
+
+  <div class="inicio" id="inicio">
+
+    <button class="coracao" onclick="abrirSurpresa()">
+
+      <span class="texto-coracao">
+        clique aqui lindu 😳👏
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- CONTEÚDO DO PRESENTE -->
+  <!-- ========================= -->
+
+  <div id="surpresa">
+
+    <h1>oi, lindu 💗</h1>
+
+    <p>
+      Você pode editar essa parte e colocar seu presente aqui! 🥹
+    </p>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================= -->
+
+  <script>
+
+    function abrirSurpresa() {
+
+      // Esconde o coração
+      document.getElementById("inicio").style.display = "none";
+
+      // Mostra o presente
+      document.getElementById("surpresa").style.display = "block";
+
+      // Começa a criar corações
+      criarCoracoes();
+
+    }
+
+
+    function criarCoracoes() {
+
+      setInterval(function() {
+
+        const heart = document.createElement("div");
+
+        heart.classList.add("heart");
+
+        heart.innerHTML = "💗";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+          (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+          heart.remove();
+        }, 5000);
+
+      }, 500);
+
+    }
+
+  </script>
+
+</body>
+</html>

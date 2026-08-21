@@ -135,38 +135,68 @@
         opacity: 0;
       }
     }
-  </style>
-  .carta {
-  background: #fffafc;
-  max-width: 500px;
-  margin: 20px auto 40px;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  color: #555;
-  line-height: 1.7;
-  text-align: left;
+  </style>.carta {
+  display: flex;
+  justify-content: center;
+  margin: 25px auto 45px;
+  padding: 0 15px;
 }
 
-.carta p {
+.papel {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 35px 30px;
+  background: #fffdf5;
+  border-radius: 5px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.08);
+
+  color: #5c4a4a;
+  text-align: left;
+  line-height: 1.8;
+
+  animation: abrirCarta 1s ease forwards;
+}
+
+/* Linhas do papel */
+.papel::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border-top: 1px solid rgba(255, 150, 170, 0.25);
+  border-bottom: 1px solid rgba(255, 150, 170, 0.25);
+  pointer-events: none;
+}
+
+/* Pequena decoração */
+.papel::after {
+  content: "♡";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 25px;
+  color: #ff8fab;
+}
+
+/* Animação da carta */
+@keyframes abrirCarta {
+  from {
+    opacity: 0;
+    transform: translateY(35px) rotate(-2deg) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.papel p {
   margin-bottom: 20px;
 }
-
-.botao-spotify {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 14px 24px;
-  background: #ff5c8a;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.botao-spotify:hover {
-  transform: scale(1.05);
-}
+  .
 </head>
 
 <body>
